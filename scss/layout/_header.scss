@@ -1,0 +1,7 @@
+//-----------------------------//
+//           Header            //
+//-----------------------------//
+
+header {
+    @include flexy($just: space-between, $items: center);
+}

@@ -1,0 +1,25 @@
+//-----------------------------//
+//      Main Container         //
+//-----------------------------//
+
+main {
+    & div {
+        padding: 10px;
+    }
+}
+
+.main-top-row {
+    @include flexy;
+}
+
+.dashboard-tab {
+    font-variant: small-caps;
+}
+
+.alert-bar {
+    @include flexy($just: space-between);
+
+    &__text {
+        margin: 0;
+    }
+}

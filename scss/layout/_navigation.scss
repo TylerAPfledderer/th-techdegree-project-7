@@ -1,0 +1,28 @@
+//-----------------------------//
+//         Navigation          //
+//-----------------------------//
+
+.nav {
+    @include flexy;
+
+    &__link {
+        display: inline-block;
+        padding: 10px 0;
+        & > svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    @include respond-to(medium) {
+        @include flexy($dis: null, $dir: column);
+        
+        &__link {
+            padding: 10px 10px;
+
+            & > svg {
+                height: 50px;
+            }
+        }
+    }
+}

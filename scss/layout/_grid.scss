@@ -1,0 +1,110 @@
+//-----------------------------//
+//       Grid Display          //
+//-----------------------------//
+
+body {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px min(50px) 1fr;
+    grid-template-areas:
+        "head"
+        "nav"
+        "main"
+    ;
+}
+
+header {
+    background-color: $primary-color;
+    grid-area: head;
+}
+
+nav {
+    background-color: $primary-color-dark;
+    grid-area: nav;
+}
+
+main {
+    background-color: $body-color;
+    grid-area: main;
+    display: grid;
+    grid-template-areas: 
+        "top-row"
+        "alert"
+        "large-traffic"
+        "daily-traffic"
+        "mobile-chart"
+        "media-counts"
+        "new-members"
+        "recent-activity"
+        "message-form"
+        "settings"
+    ;
+}
+
+// Grid Content in <main>
+
+.main-top-row {
+    grid-area: top-row;
+}
+
+.alert-bar {
+    grid-area: alert;
+}
+
+.traffic-overview {
+    grid-area: large-traffic;
+}
+
+.daily-traffic-graph {
+    grid-area: daily-traffic;
+}
+
+.mobile-user-chart {
+    grid-area: mobile-chart;
+}
+
+.media-counts {
+    grid-area: media-counts;
+}
+
+.new-members {
+    grid-area: new-members;
+}
+
+.recent-activity {
+    grid-area: recent-activity;
+}
+
+.message-form {
+    grid-area: message-form;
+}
+
+.settings-form {
+    grid-area: settings;
+}
+
+@include respond-to(medium) {
+    body {
+        grid-template-columns: 50px 1fr;
+        grid-template-rows: 50px 1fr;
+        grid-template-areas:
+            "head head"
+            "nav main"
+        ;
+    }
+
+    main {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: auto;
+        grid-template-areas: 
+            "top-row top-row"
+            "alert alert"
+            "large-traffic large-traffic"
+            "daily-traffic mobile-chart"
+            "media-counts media-counts"
+            "new-members recent-activity"
+            "message-form settings"
+        ;
+    }
+}
