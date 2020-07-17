@@ -1,25 +1,60 @@
-//-----------------------------//
-//      Main Container         //
-//-----------------------------//
-
-main {
-    & div {
-        padding: 10px;
-    }
-}
+/*-----------------------------*/
+/*      Main Container         */
+/*-----------------------------*/
 
 .main-top-row {
     @include flexy;
 }
 
 .dashboard-tab {
-    font-variant: small-caps;
+    padding: 0 15px;
+    line-height: 50px;
+}
+
+.search {
+    &-container {
+        padding: 10px 15px;
+        background-color: $trim-color;
+        flex-grow: 1;
+
+        @include flexy($just: flex-end, $items: center);
+        border: 1px solid #ddd;
+    }
+
+    &-pair {
+        @include flexy;
+        border: 1px solid #ddd;
+
+        * {
+            border: none;
+            padding: 5px;
+        }
+
+        &__input {
+            width: 100%;
+        }
+    }
 }
 
 .alert-bar {
+
+    &-container {
+        padding: 10px 15px;
+    }
+
+    padding: 10px 15px;
     @include flexy($just: space-between);
+    background-color: $primary-color;
+
+    * {
+        @extend %white-font;
+    }
 
     &__text {
         margin: 0;
+    }
+
+    &__close {
+        font-weight: bold;
     }
 }

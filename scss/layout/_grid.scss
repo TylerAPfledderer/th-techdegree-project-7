@@ -1,12 +1,11 @@
-//-----------------------------//
-//       Grid Display          //
-//-----------------------------//
+/*-----------------------------*/
+/*       Grid Display          */
+/*-----------------------------*/
 
 body {
     display: grid;
-    height: 100vh;
     grid-template-columns: 1fr;
-    grid-template-rows: 50px min(50px) 1fr;
+    grid-template-rows: 50px 50px 1fr;
     grid-template-areas:
         "head"
         "nav"
@@ -15,7 +14,7 @@ body {
 }
 
 header {
-    background-color: $primary-color;
+    background-color: $primary-color-light;
     grid-area: head;
 }
 
@@ -42,13 +41,13 @@ main {
     ;
 }
 
-// Grid Content in <main>
+/* -- Grid Content in <main> -- */
 
 .main-top-row {
     grid-area: top-row;
 }
 
-.alert-bar {
+.alert-bar-container {
     grid-area: alert;
 }
 
@@ -86,8 +85,8 @@ main {
 
 @include respond-to(medium) {
     body {
-        grid-template-columns: 50px 1fr;
-        grid-template-rows: 50px 1fr;
+        grid-template-columns: 55px 1fr;
+        grid-template-rows: 50px min-content;
         grid-template-areas:
             "head head"
             "nav main"
@@ -96,6 +95,7 @@ main {
 
     main {
         grid-template-columns: 1fr 1fr;
+        grid-template-rows: 50px;
         grid-auto-rows: auto;
         grid-template-areas: 
             "top-row top-row"

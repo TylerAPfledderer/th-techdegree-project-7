@@ -11,11 +11,18 @@
 <body>
     <header>
         <div class="logo"><strong>Your</strong>App&trade;</div>
-        <div>
-            <a href="" class="notification">Insert notification bell</a>
-            <a href="" class="account">
-                <span class="account__image">Image</span>
-                <span class="account__name">Name</span>
+        <div class="account">
+            <a href="" class="account__notification">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                    <path
+                        d="M24 18v-8c0-5.5-4.5-10-10-10S4 4.5 4 10v8l-4 8h9.1c.5 2.3 2.5 4 4.9 4s4.4-1.7 4.9-4H28l-4-8zM14 28c-1.3 0-2.4-.8-2.8-2h5.6c-.4 1.2-1.5 2-2.8 2zM3 24l3-6v-8c0-4.4 3.6-8 8-8s8 3.6 8 8v8l3 6H3z"
+                        fill="#fff" 
+                    />
+                </svg>
+            </a>
+            <a href="" class="account__link">
+                <img src="images/acct-image.png" alt="" class="account__image">
+                <span class="account__name">Tyler Pfledderer</span>
             </a>
         </div>
     </header>
@@ -54,9 +61,10 @@
         <div class="main-top-row">
             <div class="dashboard-tab">Dashboard</div>
             <div class="search-container">
-                <div class="form-group">
-                    <input type="search" name="seach-bard" id="searchBar" title="Search Membership" placeholder="Search">
-                    <button type="submit" title="Search submit">
+                <div class="search-pair">
+                    <input class="search-pair__input" type="search" name="seach-bar" id="searchBar" title="Search Membership"
+                        placeholder="Search">
+                    <button class="search-pair__submit" type="submit" title="Search submit">
                         <!-- ADD A BETTER MAGINFYING GLASS -->
                         &#128269;
                     </button>
@@ -64,14 +72,16 @@
             </div>
         </div>
         <!-- Desktop Grid Row 2/10 -->
-        <div class="alert-bar">
-            <p class="alert-bar__text">
-                <strong>Alert</strong>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, dolorem!
-            </p>
-            <span class="alert-bar__close">
-                <!-- Add X Symbol in CSS Content Property, Value '\2715' -->
-            </span>
+        <div class="alert-bar-container">
+            <div class="alert-bar">
+                <p class="alert-bar__text">
+                    <strong>Alert</strong>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, dolorem!
+                </p>
+                <span class="alert-bar__close">
+                    &cross;
+                </span>
+            </div>
         </div>
         <!-- Desktop Grid Row 3/10 -->
         <div class="traffic-overview">
