@@ -86,10 +86,12 @@ pre {
 
 /**
    * Remove the gray background on active links in IE 10.
+   * Remove text decoration.
    */
 
 a {
     background-color: transparent;
+    text-decoration: none;
 }
 
 /**
@@ -388,15 +390,10 @@ template {
 
 /**
    * Takeaway list styling when used as primary navigation
-   * Remove default decoration on nav links
    */
 
 nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
-}
-
-nav a {
-    text-decoration: none;
 }
