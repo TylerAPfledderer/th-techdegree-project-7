@@ -4,26 +4,28 @@
 
 header {
     @include flexy($just: space-between);
-    padding: 10px 15px;
+    padding: rem(15px);
+
     * {
         @extend %white-font;
     }
 }
 
 .logo {
-    font-size: 1.2rem;
+    font-weight: 300;
     align-self: center;
 
-    // strong {
-    //     font-variant: small-caps;
-    // }
-    
+    strong {
+        font-variant: small-caps;
+        font-weight: 500;
+    }
+
     &:after {
         content: '\2122';
         font-size: 0.8rem;
         position: relative;
-        top: -5px;
-        right: 5px;
+        top: rem(-5px);
+        right: rem(5px);
     }
 }
 
@@ -34,8 +36,8 @@ header {
     }
 
     &__notification {
-        padding-right: 10px; 
-        width: 25px;    
+        padding-right: rem(10px);
+        max-width: rem(30px);
         position: relative;
 
         svg {
@@ -47,28 +49,95 @@ header {
             content: '';
             display: inline-block;
             background-color: $secondary-color;
-            width: 5px;
-            height: 5px;
+            width: rem(5px);
+            height: rem(5px);
             border-radius: 50%;
             position: absolute;
-            top: 5px;
-            right: 5px;
+            top: rem(5px);
+            right: rem(5px);
+        }
+
+        @at-root {
+            @keyframes bell-hover {
+                50% {
+                    transform: scale(1.5) rotate(180deg);
+                }
+
+                100% {
+                    transform: scale(1) rotate(360deg);
+                }
+            }
+
+            @keyframes marker-scale {
+                50% {
+                    transform: scale(1.5) translate(rem(5px), rem(-5px));
+                }
+            }
+        }
+
+        &:hover {
+
+            svg {
+                animation: bell-hover .8s linear;
+                cursor: pointer;
+            }
+
+            &:after {
+                animation: marker-scale .8s ease-in-out;
+            }
         }
     }
 
     &__link {
         @include flexy($items: center);
         border-left: 1px solid rgba(black, 0.1);
-        padding-left: 10px;
-        margin-left: 5px;
+        padding-left: rem(10px);
+        margin-left: rem(5px);
     }
 
     &__image {
-        width: 30px;
+        width: rem(30px);
         border-radius: 50%;
     }
 
     &__name {
-        padding-left: 10px;
+        padding-left: rem(10px);
+    }
+}
+
+/* -- Notifications Dropdown -- */
+
+.current-notifications {
+    background: #fff;
+    border: 3px solid rgba(black, 0.2);
+    border-radius: rem(10px);
+    padding: rem(20px);
+
+    width: rem(250px);
+
+    position: absolute;
+    top: rem(43px);
+    left: rem(-225px);
+
+    &__message {
+        @include flexy($just: space-between, $items: center);
+        background-color: $trim-color;
+        border: 1px solid #ddd;
+        padding: rem(5px) rem(10px);
+
+        &:first-of-type {
+            margin-bottom: rem(5px);
+        }
+    }
+
+    &__text {
+        color: #333;
+        width: 65%;
+    }
+
+    &--hidden {
+        /* -- Hiding to allow for a "slide down" effect with JS -- */
+        max-height: 0;
+        display: none;
     }
 }

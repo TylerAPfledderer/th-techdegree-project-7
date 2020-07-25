@@ -2,7 +2,6 @@
 //              Mixins                       
 // =============================================
 
-
 // -- Flexbox --
 @mixin flexy($dis: flex, $dir: null, $wrap: null, $just: null, $items: null, $content: null) {
 
@@ -100,8 +99,8 @@
 // -- Media Queries --
 
 $breakpoints: (
-    'medium': (min-width: 768px),
-    'large': (min-width: 1024px)
+    'medium': (min-width: rem(768px)),
+    'large': (min-width: rem(1024px))
 );
 
 @mixin respond-to($breakpoint) {

@@ -2,18 +2,33 @@
 /*      Main Container         */
 /*-----------------------------*/
 
-.main-top-row {
+%body-text-color {
+    color: $body-text-color;
+}
+
+main>section:not(.main-header) {
+    padding: rem(10px) rem(30px);
+
+    @include respond-to(large) {
+        padding-top: rem(30px);
+        padding-bottom: rem(30px);
+    }
+}
+
+.main-header {
     @include flexy;
 }
 
 .dashboard-tab {
-    padding: 0 15px;
-    line-height: 50px;
+    @extend %body-text-color;
+    font-weight: 400;
+    padding: rem(20px);
+    line-height: rem(20px);
 }
 
 .search {
     &-container {
-        padding: 10px 15px;
+        padding: rem(10px) rem(20px);
         background-color: $trim-color;
         flex-grow: 1;
 
@@ -27,7 +42,7 @@
 
         * {
             border: none;
-            padding: 5px;
+            padding: rem(5px);
         }
 
         &__input {
@@ -39,22 +54,331 @@
 .alert-bar {
 
     &-container {
-        padding: 10px 15px;
+        padding: rem(10px) rem(20px);
     }
 
-    padding: 10px 15px;
+    padding: rem(15px);
     @include flexy($just: space-between);
     background-color: $primary-color;
+    border-radius: rem(5px);
 
     * {
         @extend %white-font;
-    }
-
-    &__text {
-        margin: 0;
+        font-size: rem(14px);
     }
 
     &__close {
         font-weight: bold;
+    }
+}
+
+/* -- Handle Width of Chart container -- */
+
+.widget-container {
+
+    // For Mobile Size
+    &--full,
+    &--half {
+        width: 100vw;
+        margin: 0 auto;
+    }
+
+    // For large screen
+    @include respond-to(medium) {
+        &--full {
+            width: 85vw;
+        }
+    }
+
+
+    @include respond-to(large) {
+        &--half {
+            width: 40vw;
+        }
+    }
+}
+
+
+
+/* -- Section Title Styles -- */
+
+%border-bottom-defined {
+    border-bottom: 1px solid #ddd;
+}
+
+%border-left-defined {
+    @include respond-to(large) {
+        border-left: 1px solid #ddd;
+    }
+}
+
+.section {
+    &-header {
+        margin-bottom: rem(20px);
+    }
+
+    &-title {
+        @extend %body-text-color;
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+}
+
+.traffic {
+    &-overview {
+        @extend %border-bottom-defined;
+    }
+
+    &-header {
+        @include flexy($just: space-between);
+
+        &__nav {
+            @include flexy;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        &__link {
+            @extend %body-text-color;
+            font-size: .8rem;
+            font-weight: bold;
+            background: transparent;
+            border: none;
+            border-radius: 20% / 50%;
+            padding: rem(5px) rem(15px);
+
+            &--active {
+                background: $secondary-color;
+                color: white;
+            }
+        }
+    }
+}
+
+.daily-traffic {
+    @extend %border-bottom-defined;
+}
+
+.mobile-user {
+    @extend %border-bottom-defined;
+    @extend %border-left-defined;
+}
+
+.media-counts {
+    @extend %border-bottom-defined;
+}
+
+.social {
+    &-container {
+        @include flexy($dir: column);
+
+        @include respond-to(medium) {
+            @include flexy($dis: null, $dir: row, $just: space-between);
+        }
+    }
+
+    &-widget {
+        @include flexy;
+        background-color: $trim-color;
+        border: 1px solid #ddd;
+        flex-basis: 32%;
+        padding: rem(20px) rem(30px);
+
+        &__image {
+            background-color: $primary-color;
+            padding: rem(20px);
+            width: rem(80px);
+            border-radius: 50%;
+            margin-right: rem(30px);
+
+            svg {
+                width: 100%;
+            }
+
+            path {
+                fill: white;
+            }
+
+            @include respond-to(medium) {
+                width: rem(120px);
+                padding: rem(30px);
+            }
+        }
+
+        &__text {
+            margin: auto 0;
+        }
+
+        &__name {
+            color: $primary-color;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        &__count {
+            font-size: 2.5rem;
+            font-weight: 300;
+        }
+    }
+}
+
+.member {
+    /* -- Styling for the New Memebers Section -- */
+    @include flexy($just:space-between);
+
+    &__content-left {
+        @include flexy($dir: column);
+
+        @include respond-to(medium) {
+            @include flexy($dis:null, $dir: row);
+        }
+    }
+
+    &__img {
+        margin-right: rem(15px);
+    }
+
+    /* -- Styling for the Activity Section -- */
+
+    &-activity {
+        @include flexy;
+        position: relative;
+
+        &:after {
+            content: '>';
+            color: #aaa;
+            cursor: pointer;
+            font-size: 2rem;
+            display: inline-block;
+            position: absolute;
+            right: rem(10px);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    /* -- Grouped Stylings -- */
+    &,
+    &-activity {
+        padding: rem(20px);
+    }
+
+    &+&,
+    &-activity+&-activity {
+        border-top: 1px solid #ddd;
+    }
+}
+
+.new-members {
+    @extend %border-bottom-defined;
+}
+
+.recent-activity {
+    @extend %border-bottom-defined;
+    @extend %border-left-defined;
+}
+
+/* -- Message Form -- */
+
+.message-form {
+    @include flexy($dir: column, $items: center);
+
+    *:not(:last-child) {
+        margin-bottom: rem(15px);
+    }
+
+    &__input,
+    &__textarea,
+    &__submit {
+        width: 100%;
+        padding: rem(15px);
+    }
+
+    &__input,
+    &__textarea {
+        border: 1px solid #ddd;
+        background-color: #efefef;
+
+        &::placeholder {
+            color: #c0c0c0;
+        }
+    }
+
+    &__textarea {
+        max-height: 100px;
+    }
+
+    &__submit {
+        background-color: $primary-color;
+        border: none;
+        border-radius: 5px;
+        color: white;
+    }
+}
+
+.settings {
+    @extend %border-left-defined;
+
+    &__list {
+        width: 100%;
+        background-color: $trim-color;
+        border: 1px solid #ddd;
+        background-color: #efefef;
+        color: #c0c0c0;
+        padding: rem(10px) rem(15px);
+        margin-bottom: rem(15px);
+
+        option:not(:disabled) {
+            color: black;
+        }
+    }
+
+    &__buttons {
+        @include flexy($just: space-between);
+
+        * {
+            border: none;
+            border-radius: 5px;
+            color: white;
+            flex-basis: 48%;
+            padding: rem(15px);
+        }
+    }
+
+    &__save {
+        background: $primary-color;
+    }
+
+    &__cancel {
+        background: $trim-color-dark;
+    }
+}
+
+/* -- Adjust Toggle-Switch Styles -- */
+
+.switch-light {
+    @include flexy($just: space-between, $items: center);
+    width: 50%;
+    margin: rem(15px) 0;
+
+    &.switch-ios {
+        > strong {
+            margin-right: rem(10px);
+        }
+
+        > span {
+            width: rem(100px);
+            margin-left: auto;
+        }
+
+        > input:checked ~ span {
+            background-color: $primary-color;
+            box-shadow: inset 0 0 0 30px $primary-color;
+
+            > a {
+                border-color: $primary-color;
+            }
+        }
     }
 }

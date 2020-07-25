@@ -2,15 +2,36 @@
 /*       Grid Display          */
 /*-----------------------------*/
 
-body {
-    display: grid;
-    grid-template-rows: 50px 50px 1fr;
-    grid-template-areas:
-        "head"
-        "nav"
-        "main"
-    ;
+.grid {
+
+    &-page {
+        display: grid;
+        grid-template-rows: auto rem(50px) 1fr; // Set to 'auto' instead?
+        grid-template-areas:
+            "head"
+            "nav"
+            "main"
+        ;
+    }
+
+    &-main {
+        display: grid;
+        grid-template-areas:
+            "top-row"
+            "alert"
+            "large-traffic"
+            "daily-traffic"
+            "mobile-chart"
+            "media-counts"
+            "new-members"
+            "recent-activity"
+            "message-form"
+            "settings"
+        ;
+    }
 }
+
+/* -- Grid content for the page -- */
 
 header {
     background-color: $primary-color-light;
@@ -25,24 +46,11 @@ nav {
 main {
     background-color: $body-color;
     grid-area: main;
-    display: grid;
-    grid-template-areas: 
-        "top-row"
-        "alert"
-        "large-traffic"
-        "daily-traffic"
-        "mobile-chart"
-        "media-counts"
-        "new-members"
-        "recent-activity"
-        "message-form"
-        "settings"
-    ;
 }
 
 /* -- Grid Content in <main> -- */
 
-.main-top-row {
+.main-header {
     grid-area: top-row;
 }
 
@@ -54,11 +62,11 @@ main {
     grid-area: large-traffic;
 }
 
-.daily-traffic-graph {
+.daily-traffic {
     grid-area: daily-traffic;
 }
 
-.mobile-user-chart {
+.mobile-user {
     grid-area: mobile-chart;
 }
 
@@ -74,29 +82,32 @@ main {
     grid-area: recent-activity;
 }
 
-.message-form {
+.user-messaging {
     grid-area: message-form;
 }
 
-.settings-form {
+.settings {
     grid-area: settings;
 }
 
 @include respond-to(medium) {
-    body {
-        grid-template-columns: 55px 1fr;
-        grid-template-rows: 50px min-content;
+
+    .grid-page {
+        grid-template-columns: rem(60px) 1fr;
+        grid-template-rows: auto min-content;
         grid-template-areas:
             "head head"
             "nav main"
         ;
     }
+}
 
-    main {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 50px;
+@include respond-to(large) {
+    .grid-main {
+        grid-template-columns: 50% 50%;
+        grid-template-rows: rem(50px);
         grid-auto-rows: auto;
-        grid-template-areas: 
+        grid-template-areas:
             "top-row top-row"
             "alert alert"
             "large-traffic large-traffic"

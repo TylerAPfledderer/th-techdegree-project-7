@@ -43,13 +43,16 @@ main {
 }
 
 /**
-   * Correct the font size and margin on `h1` elements within `section` and
-   * `article` contexts in Chrome, Firefox, and Safari.
+   * Clear margins of the headline tags and paragraphs.
    */
 
-h1 {
-    font-size: 2em;
-    margin: 0.67em 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+    margin: 0;
 }
 
 /* Grouping content
