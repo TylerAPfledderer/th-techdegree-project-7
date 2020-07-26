@@ -873,11 +873,13 @@ main > section:not(.main-header) {
 }
 @media (min-width: 64rem) {
   .social-container {
-    justify-content: space-between;
-    -webkit-box-pack: space-between;
-    -ms-flex-pack: space-between;
+    justify-content: space-evenly;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
   }
   .social-widget {
+    max-width: 400px;
+    width: none;
     flex-basis: 32%;
     margin: 0 !important;
   }

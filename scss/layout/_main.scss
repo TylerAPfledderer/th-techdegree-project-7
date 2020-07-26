@@ -263,10 +263,12 @@ main>section:not(.main-header) {
     @include respond-to(large) {
 
         &-container {
-            @include flexy($dis: null, $just: space-between);
+            @include flexy($dis: null, $just: space-evenly);
         }
 
         &-widget {
+            max-width: 400px;
+            width: none;
             flex-basis: 32%;
             margin: 0 !important;
         }
