@@ -19,7 +19,6 @@ bell.addEventListener("click", () => {
   }
 });
 
-
 // ------------ //
 // Alert Banner //
 // ------------ //
@@ -138,6 +137,7 @@ const dailyGraph = new Chart(dailyTrafficGraph, {
     ],
   },
   options: {
+    aspectRatio: 2.5,
     animation: {
       duration: 0,
     },
@@ -153,7 +153,15 @@ const dailyGraph = new Chart(dailyTrafficGraph, {
     legend: {
       display: false,
     },
-  },
+    layout: {
+      padding: {
+        top: 0,
+        right: 15,
+        bottom: 0,
+        left: 15,
+      }
+    }
+  }
 });
 
 // ----------------- //
@@ -176,6 +184,7 @@ const mobilePie = new Chart(mobileChart, {
     ],
   },
   options: {
+    aspectRatio: 2.5,
     animation: {
       duration: 0,
     },
@@ -185,9 +194,17 @@ const mobilePie = new Chart(mobileChart, {
         boxWidth: 20,
         fontStyle: "bold",
         fontSize: 16,
-      },
+      }
     },
-  },
+    layout: {
+      padding: {
+        top: 0,
+        right: 15,
+        bottom: 0,
+        left: 15,
+      }
+    }
+  }
 });
 
 // -------------------- //

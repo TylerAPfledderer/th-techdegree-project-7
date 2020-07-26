@@ -7,11 +7,11 @@
 }
 
 main>section:not(.main-header) {
-    padding: rem(10px) rem(30px);
+    padding: rem(10px) 0;
 
     @include respond-to(large) {
-        padding-top: rem(30px);
-        padding-bottom: rem(30px);
+        // padding-top: rem(30px);
+        // padding-bottom: rem(30px);
     }
 }
 
@@ -57,10 +57,11 @@ main>section:not(.main-header) {
         padding: rem(10px) rem(20px);
     }
 
-    padding: rem(15px);
     @include flexy($just: space-between);
     background-color: $primary-color;
     border-radius: rem(5px);
+    margin: 0 rem(20px);
+    padding: rem(15px);
 
     * {
         @extend %white-font;
@@ -79,19 +80,22 @@ main>section:not(.main-header) {
     // For Mobile Size
     &--full,
     &--half {
-        width: 100vw;
+        width: 90vw;
         margin: 0 auto;
     }
 
     // For large screen
     @include respond-to(medium) {
-        &--full {
-            width: 85vw;
+
+        &--full,
+        &--half {
+            width: 90vw;
         }
     }
 
 
     @include respond-to(large) {
+
         &--half {
             width: 40vw;
         }
@@ -115,6 +119,7 @@ main>section:not(.main-header) {
 .section {
     &-header {
         margin-bottom: rem(20px);
+        padding: 0 rem(20px);
     }
 
     &-title {
@@ -130,7 +135,9 @@ main>section:not(.main-header) {
     }
 
     &-header {
-        @include flexy($just: space-between);
+        @include flexy($wrap: wrap, $just: space-between);
+
+        margin-bottom: rem(10px);
 
         &__nav {
             @include flexy;
@@ -146,11 +153,20 @@ main>section:not(.main-header) {
             background: transparent;
             border: none;
             border-radius: 20% / 50%;
-            padding: rem(5px) rem(15px);
+            padding: rem(5px) rem(10px);
 
             &--active {
                 background: $secondary-color;
                 color: white;
+            }
+        }
+    }
+
+    @include respond-to(medium) {
+        &-header {     
+            margin-top: rem(10px);   
+            &__nav {
+                margin: 0;
             }
         }
     }
@@ -172,23 +188,24 @@ main>section:not(.main-header) {
 .social {
     &-container {
         @include flexy($dir: column);
-
-        @include respond-to(medium) {
-            @include flexy($dis: null, $dir: row, $just: space-between);
-        }
+        padding: 0 ((10px / 320px) * 100%);
     }
 
     &-widget {
         @include flexy;
         background-color: $trim-color;
         border: 1px solid #ddd;
-        flex-basis: 32%;
+        width: 100%;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
         padding: rem(20px) rem(30px);
 
         &__image {
             background-color: $primary-color;
             padding: rem(20px);
-            width: rem(80px);
+            width: rem(70px);
+            height: rem(70px);
             border-radius: 50%;
             margin-right: rem(30px);
 
@@ -202,7 +219,7 @@ main>section:not(.main-header) {
 
             @include respond-to(medium) {
                 width: rem(120px);
-                padding: rem(30px);
+                // padding: rem(30px);
             }
         }
 
@@ -220,15 +237,56 @@ main>section:not(.main-header) {
             font-size: 2.5rem;
             font-weight: 300;
         }
+
+        &+& {
+            margin-top: rem(10px);
+        }
+    }
+
+    @include respond-to(medium) {
+        &-container {
+            @include flexy($dis: null, $dir: row, $wrap: wrap, $just: center);
+        }
+
+        &-widget {
+            &__image {
+                width: rem(80px);
+                height: rem(80px);
+            }
+
+            &+&:not(:last-of-type) {
+                margin-top: 0;
+            }
+        }
+    }
+
+    @include respond-to(large) {
+
+        &-container {
+            @include flexy($dis: null, $just: space-between);
+        }
+
+        &-widget {
+            flex-basis: 32%;
+            margin: 0 !important;
+        }
     }
 }
 
 .member {
     /* -- Styling for the New Memebers Section -- */
-    @include flexy($just:space-between);
+    @include flexy($wrap: wrap, $just: space-between);
 
     &__content-left {
         @include flexy($dir: column);
+        margin-bottom: rem(10px);
+
+        /* To allow the Dates to equally wrap beneath this text when the screen size narrows */
+        width: rem(248px);
+
+        >.member__img {
+            margin-bottom: rem(5px);
+        }
 
         @include respond-to(medium) {
             @include flexy($dis:null, $dir: row);
@@ -245,6 +303,15 @@ main>section:not(.main-header) {
         @include flexy;
         position: relative;
 
+        &__text {
+            /* To prevent text from bleeding over the arrow */
+            width: ((175/280) * 100%);
+        }
+
+        &__status {
+            margin-bottom: rem(10px);
+        }
+
         &:after {
             content: '>';
             color: #aaa;
@@ -252,7 +319,7 @@ main>section:not(.main-header) {
             font-size: 2rem;
             display: inline-block;
             position: absolute;
-            right: rem(10px);
+            right: rem(15px);
             top: 50%;
             transform: translateY(-50%);
         }
@@ -261,7 +328,8 @@ main>section:not(.main-header) {
     /* -- Grouped Stylings -- */
     &,
     &-activity {
-        padding: rem(20px);
+        margin: 0 rem(20px);
+        padding: rem(20px) 0;
     }
 
     &+&,
@@ -281,8 +349,17 @@ main>section:not(.main-header) {
 
 /* -- Message Form -- */
 
+.user-messaging {
+    @extend %border-bottom-defined;
+
+    @include respond-to(large) {
+        border-bottom: none;
+    }
+}
+
 .message-form {
     @include flexy($dir: column, $items: center);
+    padding: 0 rem(20px);
 
     *:not(:last-child) {
         margin-bottom: rem(15px);
@@ -319,6 +396,8 @@ main>section:not(.main-header) {
 
 .settings {
     @extend %border-left-defined;
+    padding-left: rem(20px) !important;
+    padding-right: rem(20px) !important;
 
     &__list {
         width: 100%;
@@ -355,28 +434,27 @@ main>section:not(.main-header) {
     }
 }
 
+
+
 /* -- Adjust Toggle-Switch Styles -- */
 
 .switch-light {
     @include flexy($just: space-between, $items: center);
-    width: 50%;
+    max-width: rem(300px);
     margin: rem(15px) 0;
 
     &.switch-ios {
-        > strong {
-            margin-right: rem(10px);
-        }
 
-        > span {
+        >span {
             width: rem(100px);
             margin-left: auto;
         }
 
-        > input:checked ~ span {
+        >input:checked~span {
             background-color: $primary-color;
             box-shadow: inset 0 0 0 30px $primary-color;
 
-            > a {
+            >a {
                 border-color: $primary-color;
             }
         }

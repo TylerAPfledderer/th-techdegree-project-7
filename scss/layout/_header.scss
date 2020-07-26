@@ -117,7 +117,7 @@ header {
 
     position: absolute;
     top: rem(43px);
-    left: rem(-225px);
+    left: rem(-42px);
 
     &__message {
         @include flexy($just: space-between, $items: center);
