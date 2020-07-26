@@ -229,3 +229,13 @@ send.addEventListener("click", () => {
     alert(`Message successfully sent to ${user.value}.`);
   }
 });
+
+// Prevent the message field from being cleared on submit if the user failed to provide a member name
+
+const form = document.querySelector(".message-form");
+
+form.addEventListener("submit", e => {
+  if (user.value === "" || message.value === "") {
+    e.preventDefault();
+  }
+});
